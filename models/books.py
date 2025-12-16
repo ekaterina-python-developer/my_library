@@ -9,6 +9,6 @@ class BooksModel(Model):
     id: Mapped[int] = mapped_column(primary_key=True, init=False)
     title: Mapped[str]
     author: Mapped[str]
-    year: Mapped[int | None]
-    pages: Mapped[int | None]
+    year: Mapped[int]
+    pages: Mapped[int]
     is_read: Mapped[bool] = mapped_column(default=False)
