@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException, status
 
 from database import SessionDep
 from repository import BookRepository
@@ -22,3 +22,15 @@ async def get_books(
 ):
     books = await BookRepository.find_all(session)
     return books
+
+
+@router.get("/{id}", response_model=SBook)
+async def get_book(
+    session: SessionDep,
+    id: int
+):
+    book = await BookRepository.find_book(session, id)
+    if not book:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail="Book not found")
+    return book

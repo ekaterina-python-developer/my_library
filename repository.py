@@ -19,5 +19,10 @@ class BookRepository:
     async def find_all(cls, session: AsyncSession):
         query = select(BooksModel)
         result = await session.execute(query)
-        books_models = result.scalars().all()
-        return books_models
+        return result.scalars().all()
+
+    @classmethod
+    async def find_book(cls, session: AsyncSession, id: int):
+        query = select(BooksModel).where(BooksModel.id == id)
+        result = await session.execute(query)
+        return result.scalars().first()
