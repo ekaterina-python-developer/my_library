@@ -1,4 +1,4 @@
-from sqlalchemy import select
+from sqlalchemy import delete, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from models.books import BooksModel
@@ -26,3 +26,9 @@ class BookRepository:
         query = select(BooksModel).where(BooksModel.id == id)
         result = await session.execute(query)
         return result.scalars().first()
+
+    @classmethod
+    async def delete_one(cls, session: AsyncSession, id: int):
+        query = delete(BooksModel).where(BooksModel.id == id)
+        await session.execute(query)
+        await session.commit()

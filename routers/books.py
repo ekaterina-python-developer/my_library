@@ -34,3 +34,15 @@ async def get_book(
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail="Book not found")
     return book
+
+
+@router.delete("/{id}", status_code=status.HTTP_204_NO_CONTENT)
+async def delete_book(
+    session: SessionDep,
+    id: int
+):
+    book = await BookRepository.find_book(session, id)
+    if not book:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail="Book not found")
+    await BookRepository.delete_one(session, id)
