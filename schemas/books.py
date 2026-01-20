@@ -16,3 +16,11 @@ class SBookAdd(SBookBase):
 class SBook(SBookBase):
     id: int
     model_config = ConfigDict(from_attributes=True)
+
+
+# class SBookPatch(BaseModel):
+#     title: str | None
+#     author: str | None
+#     year: int | None
+#     pages: int | None = Field(None, gt=10)
+#     is_read: bool | None = None
