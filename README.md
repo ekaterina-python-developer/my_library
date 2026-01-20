@@ -1,2 +1,1 @@
-# my_library.
-проверка связи
+# my_library
