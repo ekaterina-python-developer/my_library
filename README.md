@@ -25,28 +25,33 @@ Uvicorn
 aiosqlite 
 
 ## Установка и запуск
-'''
-1. Клонирование репозитория
+### 1. Клонирование и настройка
+```
+# Клонирование репозитория
 git clone <ваш-репозиторий>
 cd my_library
 
-2. Создание виртуального окружения
+# Создание виртуального окружения
 python -m venv venv
 
-3. Активация виртуального окружения
-Windows: venv\Scripts\activate
-Linux/Mac: source venv/bin/activate
+# Активация виртуального окружения
+# Windows:
+venv\Scripts\activate
 
-4. Установка зависимостей
+# Linux/Mac:
+source venv/bin/activate
+
+# Установка зависимостей
 pip install -r requirements.txt
+```
 
-5. Запуск приложения
+### 2. Запуск приложения
+```
 uvicorn main:app --reload
+```
+### 3. Тестирование
 
-6. Тестирование
-Приложение включает встроенную интерактивную документацию:
 Swagger UI: http://localhost:8000/docs
-'''
 
 ## API Endpoints
 Книги (/books)
@@ -55,8 +60,7 @@ Swagger UI: http://localhost:8000/docs
 Описание: Возвращает список всех книг в библиотеке
 Ответ: 200 OK - список объектов SBook
 Пример ответа:
-
-'''
+```
 [
   {
     "id": 1,
@@ -67,7 +71,7 @@ Swagger UI: http://localhost:8000/docs
     "is_read": true
   }
 ]
-'''
+```
 ### 2. Получить книгу по ID
 Метод: GET /books/{id}
 Описание: Возвращает книгу по указанному идентификатору
@@ -81,8 +85,7 @@ Swagger UI: http://localhost:8000/docs
 Тело запроса: объект SBookAdd
 Ответ: 201 Created - созданный объект SBook
 Пример запроса:
-
-'''
+```
 {
   "title": "Преступление и наказание",
   "author": "Фёдор Достоевский",
@@ -90,7 +93,7 @@ Swagger UI: http://localhost:8000/docs
   "pages": 592,
   "is_read": false
 }
-'''
+```
 ### 4. Полное обновление книги (PUT)
 Метод: PUT /books/{id}
 Описание: Полностью обновляет все поля книги
@@ -106,3 +109,5 @@ Swagger UI: http://localhost:8000/docs
 Ответ: 204 No Content - без тела ответа
 Ошибки: 404 Not Found - если книга не найдена
 
+## Автор
+[Екатерина Понурова](https://github.com/ekaterina-python-developer)
