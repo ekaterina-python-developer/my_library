@@ -61,5 +61,4 @@ async def update_book_complete(
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Book not found"
         )
-
     return updated_book
