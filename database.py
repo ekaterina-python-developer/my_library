@@ -13,8 +13,6 @@ new_session = async_sessionmaker(engine, expire_on_commit=False)
 
 class Model(MappedAsDataclass, DeclarativeBase):
     pass
-
-
 async def get_db():
     async with new_session() as session:
         yield session

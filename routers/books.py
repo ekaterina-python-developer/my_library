@@ -63,20 +63,3 @@ async def update_book_complete(
         )
 
     return updated_book
-
-
-# @router.patch("/{id}", response_model=SBook)
-# async def update_book_partial(
-#     book_data: SBookPatch,
-#     session: SessionDep,
-#     id: int
-# ):
-#     updated_book = await BookRepository.update_one_partial(session, book_data, id)
-
-#     if not updated_book:
-#         raise HTTPException(
-#             status_code=status.HTTP_404_NOT_FOUND,
-#             detail="Book not found"
-#         )
-
-#     return updated_book
